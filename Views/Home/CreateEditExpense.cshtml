@@ -1,0 +1,32 @@
+﻿@{
+    ViewData["Title"] = "Create / Edit";
+}
+@model expensetracker.Models.Expense
+
+<div class="container mt-5">
+    <div class="card">
+        <div class="card-header text-center">
+            <h3 class="display-6">Create or Edit an Expense</h3>
+        </div>
+        <div class="card-body">
+            <form asp-action="CreatedEditExpenseForm" asp-controller="Home" method="post">
+                <input hidden class="form-control" type="number" asp-for="Id" />
+
+                <div class="mb-3">
+                    <label class="form-label">Value ($)</label>
+                    <input class="form-control" type="number" placeholder="0" asp-for="Value" step="0.01" required />
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Description</label>
+                    <input class="form-control" type="text" placeholder="Add a description" asp-for="Description" required />
+                </div>
+
+                <div class="text-center">
+                    <button class="btn btn-primary" type="submit">Save</button>
+                    <a asp-action="Expenses" class="btn btn-secondary">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

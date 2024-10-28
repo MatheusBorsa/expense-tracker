@@ -1,0 +1,44 @@
+﻿@model List<Expense>
+
+<div class="container mt-4">
+    <div class="text-center mb-4">
+        <h1 class="display-4">Expenses</h1>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <h3>Total Expenses: @ViewBag.Expenses</h3>
+        </div>
+        <div class="card-body">
+            <table class="table table-striped table-hover table-bordered">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Value</th>
+                        <th>Description</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var expense in Model)
+                    {
+                        <tr>
+                            <td>@expense.Id</td>
+                            <td>@expense.Value</td>
+                            <td>@expense.Description</td>
+                            <td>
+                                <a asp-action="CreateEditExpense" asp-route-id="@expense.Id" class="btn btn-sm btn-warning">
+                                    <i class="fas fa-edit"></i> Edit
+                                </a>
+                                <a asp-action="DeleteExpense" asp-route-id="@expense.Id" class="btn btn-sm btn-danger">
+                                    <i class="fas fa-trash-alt"></i> Delete
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <a asp-action="CreateEditExpense" class="btn btn-primary">Add New Expense</a>
+        </div>
+    </div>
+</div>
